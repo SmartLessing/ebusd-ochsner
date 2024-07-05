@@ -20,7 +20,7 @@ Luckily, a software developer with nickname [john30](https://github.com/john30) 
 
 # The Magic - how to decode the data on the eBUS
 Unfortunately, there is no vendor documentation available from Ochsner or TEM Group related to the specific eBUS protocol they use. Every vendor can integrate and use eBUS as they want, so decoding the data means re-enignineering is required. John also maintains a [ebusd-config](https://github.com/john30/ebusd-configuration) repository where he collects and provides ready-to-use config files for different eBUS devices, mainly (latest config files) for Vaillant devices, but also some older Ochsner configuration files can be found there. 
-So I had to do a lot of learning (how ebusd works, how to read and analyse received data and how to get it structured) and reverse-engineering of my heat pump by myself. Once you understand the basics - there is progress and progress motivates for the next steps to go. An Ochsner related Discussion on Johns github motivated me fork the work of [Uwe]([https://github.com/cybersmart-eu](https://github.com/cybersmart-eu/ebusd-ochsner)) to refine it in a way so that Home Assistant integration works out of the box with a slightly modfied configuration.
+An Ochsner related Discussion on Johns github motivated me to fork the work of [Uwe]([https://github.com/cybersmart-eu](https://github.com/cybersmart-eu/ebusd-ochsner)) to refine it in a way so that Home Assistant integration works out of the box with a slightly modfied configuration.
 Please also check outthe github of [Uwe](https://github.com/cybersmart-eu), [Lori](https://github.com/Lorilatschki) and [Wolfgang](https://github.com/wiedwo) as we are sitting in the same boat together :-)
 
 ## ebusd - most important commands
