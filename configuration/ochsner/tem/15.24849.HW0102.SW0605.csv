@@ -1,6 +1,6 @@
 #type (r[1-9];w;u),circuit,name,comment,QQ,ZZ,PBSB,ID,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment
 #Ochsner,SID=15;MF=TEM;ID=24849;SW=0605;HW=0102,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-#IMPORTANT NOTE: Only one read-line per address allowed
+#IMPORTANT NOTE: Only one read-line per address allowed,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #______________________________,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 *r,24849,,,,15,0621,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 *w,24849,,,,10,0623,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
