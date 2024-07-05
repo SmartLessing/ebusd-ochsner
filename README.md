@@ -13,7 +13,38 @@ Before someone is using my configuration files, I recommend to check the main co
 
 ![IMG_9585](https://github.com/SmartLessing/ebusd-ochsner/assets/172171816/72860a4a-0de7-4e8d-8d0b-85d5bba65ab8)
 
-![image](https://github.com/cybersmart-eu/ebusd-ochsner/assets/77569473/8c0f0833-acea-463e-8084-536d43769e9a)
+### ebusctl info ###
+```
+version: ebusd 23.3.23.3
+update check: OK
+device: ebus-air11:9999, TCP, enhanced, firmware 1.1[460f].1[460f]
+access: *
+signal: acquired
+symbol rate: 39
+max symbol rate: 242
+min arbitration micros: 0
+max arbitration micros: 54
+min symbol latency: 0
+max symbol latency: 76
+scan: finished
+reconnects: 0
+masters: 5
+messages: 102
+conditional: 0
+poll: 73
+update: 0
+address 01: master #6
+address 03: master #11
+address 06: slave #6, scanned "MF=TEM;ID=25440;SW=0113;HW=0000"
+address 08: slave #11, scanned "MF=TEM;ID=WE_1 ;SW=3632;HW=3030"
+address 10: master #2
+address 13: master #12
+address 15: slave #2, scanned "MF=TEM;ID=24849;SW=0605;HW=0102", loaded "tem/15.24849.HW0102.SW0605.csv"
+address 18: slave #12, scanned "MF=TEM;ID=WE_2 ;SW=3632;HW=3030"
+address 31: master #8, ebusd
+address 36: slave #8, ebusd
+address 91: slave, scanned "MF=TEM;ID=26984;SW=0120;HW=0100"
+```
 
 ## The Gateway - ebusd and adapters
 Luckily, a software developer with nickname [john30](https://github.com/john30) developed an "ebus deamon", acting as an eBUS gateway, and provides his Open-Source software [ebusd](https://github.com/john30/ebusd) free of charge via github. A hardware adapter as serial interface is required, to physically connect the eBUS with computer hardware. John, the author of ebusd also provides [hardware adapters ](https://adapter.ebusd.eu/) for this purpose, but also other available 3rd party adapters shall do the job.
