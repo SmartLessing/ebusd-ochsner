@@ -32,10 +32,10 @@ xxx
 
 # My Hardware
 xxx
-## Raspberry Pi 3B
+## Raspberry Pi 5
 xxx
-## ebus Adapter 3.1
-xxx
+## eBUS Adapter Shield v5
+[https://adapter.ebusd.eu](https://adapter.ebusd.eu)
 
 # Some (additional) useful Software
 xxx
@@ -43,14 +43,10 @@ xxx
 xxx
 ## MQTT-Explorer
 xxx
-## Node-RED
-xxx
+
 
 # My Home Automation System
 xxx
-## Timberwolf Server (KNX, MQTT, Mobus)
-xxx
-### InfluxDB
-xxx
-### Grafana
+## Home Assistant
+<img width="1445" alt="Bildschirmfoto 2024-07-05 um 17 22 05" src="https://github.com/SmartLessing/ebusd-ochsner/assets/172171816/a59aa1a8-e203-4cc2-9c03-3116b14b41de">
 
