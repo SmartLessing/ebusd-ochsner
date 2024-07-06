@@ -1,6 +1,6 @@
 #type (r[1-9];w;u),circuit,name,comment,QQ,ZZ,PBSB,ID,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment,field,part (m;s),datatypes/templates,divider/values,unit,comment
 #Ochsner,SID=15;MF=TEM;ID=24849;SW=0605;HW=0102,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-#IMPORTANT NOTE: Only one read-line per address allowed
+#IMPORTANT NOTE: Only one read-line per address allowed,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #______________________________,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 *r,24849,,,,15,0621,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 *w,24849,,,,10,0623,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
@@ -85,7 +85,6 @@ r,,heating/temp.buffer.flow_1,00-096 Anlage Vorlauftemperatur (same as 00-015),,
 r,,heating/temp.buffer.flow_2,00-096 Anlage Vorlauftemperatur (same as 00-015),,,,00e00050,,,param,,,,,,tempt,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 r1,,heating/temp.flow,00-002 Actual heating circuit flow temperature,,,,7785000a,,,param,,,,,,tempt,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 r,,heating/temp.flow_1,00-002 Actual heating circuit flow temperature (same as 00-015),,,,0082004a,,,param,,,,,,tempt,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-
 r,,heating/temp.manual.set,07-009 Set temperature manual mode,,,,0789004a,,,param,,,,,,tempt,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 w,,heating/temp.manual.set,07-009 Set temperature manual mode,,,,0789004a,,,tempt,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 r,,heating/temp.room.target.dayH.set,03-051 Room temp day heating target,,,,03b3004a,,,param,,,,,,tempt,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
@@ -95,13 +94,13 @@ w,,heating/temp.room.target.nightH.set,03-053 Room temp night heating target,,,,
 r,,heating/temp.room.set,01-001 Set room temperature,,,,7784000a,,,param,,,,,,tempt,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 w,,heating/temp.room.set,01-001 Set room temperature,,,,7784000a,,,tempt,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 r1,,heating/temp.room,00-001 Actual room temperature,,,,7783000a,,,param,,,,,,tempt,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-#unverified
+#unverified______________________________,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 r1,,heating/temp.flow.setpoint,01-002 Setpoint temperature manual mode (same as 07-009),,,,6400be00,,,param,,,,,,tempt,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #r,,heating/temp.room.set_1,01-001 Set room temperature,,,,77840008,,,param,,,,,,tempt,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #w,,heating/temp.room.set_1,01-001 Set room temperature,,,,77840008,,,tempt,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-#unverified - null value without room controller
+#unverified - null value without room controller______________________________,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #r,,heating/temp.room_1,00-001 Actual room temperature,,,,00810048,,,param,,,,,,tempt,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-#unverified - null value without room controller
+#unverified - null value without room controller______________________________,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #r,,heating/temp.room_2,00-001 Actual room temperature,,,,0081004a,,,param,,,,,,tempt,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #______________________________,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 r1,,hotwater/temp.buffer.tb.setpoint,01-004 Setpoint desired hot water temperature,,,,7982000e,,,param,,,,,,tempt,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
