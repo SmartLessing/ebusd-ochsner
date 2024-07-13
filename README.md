@@ -193,10 +193,7 @@ MQTT Explorer is a comprehensive MQTT client that provides a structured overview
 <img width="1136" alt="Bildschirmfoto 2024-07-05 um 19 11 24" src="https://github.com/SmartLessing/ebusd-ochsner/assets/172171816/7b33ed10-cfac-4053-9dae-8e1b2915060a">
 
 
-# My Home Automation System
-I am using Home Assistant to visualize the heatump data.
-
-## Home Assistant
+# Home Assistant
 Awaken your home
 Open source home automation that puts local control and privacy first. Powered by a worldwide community of tinkerers and DIY enthusiasts. Perfect to run on a Raspberry Pi or a local server.
 
@@ -205,3 +202,16 @@ https://www.home-assistant.io
 This is my dashboard for my heatpump:
 <img width="1445" alt="Bildschirmfoto 2024-07-05 um 17 22 05" src="https://github.com/SmartLessing/ebusd-ochsner/assets/172171816/a59aa1a8-e203-4cc2-9c03-3116b14b41de">
 
+## YAML Code für das Setzen der Uhr-Zeit über MQTT
+
+Vorraussetzung: write messages sind aktiviert z. B. in der mqtt-hassio.cfg:
+`filter-direction = r|u|^w`
+Und der Feldname darf keinen `/` beinhalten, sonst kann der ebusd die Nachricht nicht parsen: https://github.com/john30/ebusd/issues/1302
+
+```yaml
+service: mqtt.publish
+metadata: {}
+data:
+  topic: ebusd/24849/service.time.set/set
+  payload_template: "{{ now().strftime('%H:%M') }}"
+```
