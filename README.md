@@ -66,7 +66,7 @@ ebusctl grab result all decode > /home/auser/decode.all.txt
 File conten of decode.all.txt
 ```
 ...
-31150621047d800002 / 0a35810000ff0000000000 = 4: 24849 heatpump/status.string
+31150621047d800002 / 0a35810000ff0000000000 = 4: 24849 heatpump_status_string
  BCD   35=35, 81=81, 00=0, 00=0, ff=-, 00=0, 00=0, 00=0, 00=0, 00=0
  BCD:2 3581=8135, 8100=81, 0000=0, 00ff=-, ff00=-, 0000=0, 0000=0, 0000=0, 0000=0
  BCD:3 358100=8135, 810000=81, 0000ff=-, 00ff00=-, ff0000=-, 000000=0, 000000=0, 000000=0
@@ -162,7 +162,7 @@ Instructions:
 
 ```
 /etc/default/ebusd
-EBUSD_OPTS="--scanconfig --configpath=/etc/ebusd/ -d ens:ebus-air11:9999 --latency=30 --pollinterval=5 --accesslevel=* --httpport=8889 --htmlpath=/va$ --mqtthost=raspberrypi --mqttport=1883 --mqttint=/etc/ebusd/mqtt-hassio.cfg --mqttjson"
+EBUSD_OPTS="--scanconfig --configpath=/etc/ebusd/ -d ens:ebus-air11:9999 --accesslevel=* --httpport=8889 --htmlpath=/va$ --mqtthost=raspberrypi --mqttport=1883 --mqttint=/etc/ebusd/mqtt-hassio.cfg --mqttjson"
 ```
 
 # My Hardware
@@ -212,6 +212,6 @@ Und der Feldname darf keinen `/` beinhalten, sonst kann der ebusd die Nachricht 
 service: mqtt.publish
 metadata: {}
 data:
-  topic: ebusd/24849/service.time.set/set
+  topic: ebusd/24849/service_time_set/set
   payload_template: "{{ now().strftime('%H:%M') }}"
 ```
