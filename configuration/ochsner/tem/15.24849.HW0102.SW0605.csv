@@ -71,7 +71,7 @@ w,,heating_temp_room_target_nightH_set_write,03-053 Room temp night heating targ
 r,,heating_temp_room_set,01-001 Set room temperature,,,,7784000a,,,param,,,,,,tempt,,,
 w,,heating_temp_room_set_write,01-001 Set room temperature,,,,7784000a,,,tempt,,,,,,,,,
 r1,,heating_temp_room,00-001 Actual room temperature,,,,7783000a,,,param,,,,,,tempt,,,
-r1,,heating_temp_flowpoint,01-002 Setpoint temperature manual mode (same as 07-009),,,,6400be00,,,param,,,,,,tempt,,,
+r1,,heating_temp_flow_setpoint,01-002 Setpoint heating circuit flow temperature (same as 07-009),,,,6400be00,,,param,,,,,,tempt,,,
 r1,,heating_temp_preferencesC1_pointtemp,03-001 Base point temperature,,,,6380000a,,,param,,,,,,tempt,,,
 r1,,heating_temp_preferencesC1_outsideTH,03-012 Design outside temperature,,,,6383000a,,,param,,,,,,temp3,,,
 r1,,heating_temp_preferencesC1_supplyTH,03-013 Design supply temperature,,,,6384000a,,,param,,,,,,temp1,,,
