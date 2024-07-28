@@ -51,7 +51,7 @@ tempt2:temperature,SIN,2,°C,Temperatur
 humidity,UIN,,%,
 status,UCH,,,
 apptype,UIN,,,
-percent100:percent,SIN,100,%,
+percent100:percent,SIN,,%,
 #___German mapping___,,,,
 apptypeheating_de:apptype,UIN,0=Funktion abgeschaltet;1=direkter Heizkreis ohne Kühlung;2=direkter Heizkreis mit Kühlung;3=gemischter Heizkreis ohne Kühlung;4=gemischter Heizkreis mit Kühlung,,
 apptypeauxheating_de:apptype,UIN,0=Funktion abgeschaltet;1=Zusatzheizung im Puffer;2=Zusatzheizung im WP-Vorlauf;3=Zusatzheizung im Puffer mit eigener Temperaturbegrenzung und WEP,,
