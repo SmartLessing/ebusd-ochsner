@@ -138,13 +138,13 @@ ebusctl scan result
 
 ### ebusctl read
 ```
-ebusctl read heatpump/status.string
+ebusctl read heatpump_status_string
 53;1;00;0;25.5;0.0;Standby
 ```
 
 ### ebusctl write
 ```
-ebusctl write  -c 24849 heatpump/mode.set 0
+ebusctl write  -c 24849 heatpump_mode_set_write 0
 done
 ```
 
@@ -175,8 +175,8 @@ https://www.raspberrypi.com/products/raspberry-pi-5/
 ![23551-Raspberry-Pi-5-8G_(cropped)](https://github.com/SmartLessing/ebusd-ochsner/assets/172171816/4b1c75fe-95dd-4d4c-9b24-11d82de806b6)
 
 
-## eBUS Adapter Shield v5
-eBUS Adapter Shield v5, which can be used to communicate with an eBUS enabled heating, ventilation or solar system.
+## eBUS Adapter Shield C6
+eBUS Adapter Shield C6, which can be used to communicate with an eBUS enabled heating, ventilation or solar system.
 https://adapter.ebusd.eu
 
 # Some (additional) useful Software
@@ -213,5 +213,5 @@ service: mqtt.publish
 metadata: {}
 data:
   topic: ebusd/24849/service_time_set/set
-  payload_template: "{{ now().strftime('%H:%M') }}"
+  payload: "{{ now().strftime('%H:%M') }}"
 ```
