@@ -144,7 +144,7 @@ ebusctl read heatpump_status_string
 
 ### ebusctl write
 ```
-ebusctl write  -c 24849 heatpump_mode_set_write 0
+ebusctl write -c 24849 heatpump_mode_set_write 0
 done
 ```
 
