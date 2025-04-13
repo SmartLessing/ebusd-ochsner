@@ -207,9 +207,9 @@ This is my dashboard for my heatpump:
 
 ## YAML Code for setting date and time in the heatpumo via MQTT
 
-Prerequisites: write messages are activated in mqtt-hassio.cfg:
-`filter-direction = r|u|^w`
-A slash `/` in the topic string will not work, as ebus does not support it: https://github.com/john30/ebusd/issues/1302
+Prerequisites: write messages are activated in mqtt-hassio.cfg: `filter-direction = r|u|^w`
+
+Hint: A slash `/` in the topic string will not work, as ebus does not support it: https://github.com/john30/ebusd/issues/1302
 
 ```yaml
 service: mqtt.publish
