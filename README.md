@@ -167,13 +167,16 @@ EBUSD_OPTS="--scanconfig --configpath=/etc/ebusd/ -d ens:ebus-air11:9999 --acces
 
 # My Hardware
 
-## Raspberry Pi 5
-The Raspberry Pi 5 was announced on September 28, 2023. Improvements in hardware and software reportedly make the Pi 5 more than twice as powerful as the Pi 4. It comes with an I/O-controller designed in-house, a power button, and an RTC chip, among other things. The RTC chip needs a battery, which can be purchased, but it saves a Pi user the cost of the chip. Unlike the Pi 4, it was released with either 4 or 8 GB of RAM. The 4 GB model costs US$60 and the 8 GB model costs US$80. An important thing to note is that it lacks a 3.5 mm audio/video jack. Users can use Bluetooth, HDMI, USB audio or an Audio HAT if they want to hear sound out of the Pi 5.
+## Lenovo ThinkCentre M70q
+I migrated from a Raspberry Pi 5 to a Proxmox based home server using a refurbished Lenovo ThinkCentre M70q 11DT - Mini - Core i3 10100T / 3 GHz. I installed 32 GB of Ram and a 512 SSD to host Linux Containers (LXC) and virtual machines (VM). I run Proxmox and have two Linux Containers in place to host software for the heatpump: one for Mosquitto and one for ebusd.
+HomneAssistant is running in a virtual Machine.
 
-https://www.raspberrypi.com/products/raspberry-pi-5/
+![240a744dabb97b39a3b42f2cd519bcf4_3](https://github.com/user-attachments/assets/a1400a5c-dd09-4e9f-82f0-91213ea24677)
 
-![23551-Raspberry-Pi-5-8G_(cropped)](https://github.com/SmartLessing/ebusd-ochsner/assets/172171816/4b1c75fe-95dd-4d4c-9b24-11d82de806b6)
-
+### Useful Links
+https://www.proxmox.com/en/
+https://forums.servethehome.com/index.php?threads/lenovo-thinkcentre-thinkstation-tiny-project-tinyminimicro-reference-thread.34925/
+https://community-scripts.github.io/ProxmoxVE/scripts
 
 ## eBUS Adapter Shield C6
 eBUS Adapter Shield C6, which can be used to communicate with an eBUS enabled heating, ventilation or solar system.
@@ -200,18 +203,18 @@ Open source home automation that puts local control and privacy first. Powered b
 https://www.home-assistant.io
 
 This is my dashboard for my heatpump:
-<img width="1445" alt="Bildschirmfoto 2024-07-05 um 17 22 05" src="https://github.com/SmartLessing/ebusd-ochsner/assets/172171816/a59aa1a8-e203-4cc2-9c03-3116b14b41de">
+<img width="1269" alt="Bildschirmfoto 2025-04-13 um 09 28 07" src="https://github.com/user-attachments/assets/0a7b8691-9ac5-4bb0-8135-a878c21fda71" />
 
-## YAML Code für das Setzen der Uhr-Zeit über MQTT
+## YAML Code for setting date and time in the heatpumo via MQTT
 
-Vorraussetzung: write messages sind aktiviert z. B. in der mqtt-hassio.cfg:
+Prerequisites: write messages are activated in mqtt-hassio.cfg:
 `filter-direction = r|u|^w`
-Und der Feldname darf keinen `/` beinhalten, sonst kann der ebusd die Nachricht nicht parsen: https://github.com/john30/ebusd/issues/1302
+A slash `/` in the topic string will not work, as ebus does not support it: https://github.com/john30/ebusd/issues/1302
 
 ```yaml
 service: mqtt.publish
 metadata: {}
 data:
-  topic: ebusd/24849/service_time_set/set
+  topic: ebusd/24849/service_time_set_write/set
   payload: "{{ now().strftime('%H:%M') }}"
 ```
