@@ -11,6 +11,7 @@ With the help of an ebus Gateway and some re-engineering it is possible to decod
 
 ### Check your Ochsner Hardware and Software Version
 Before someone is using my configuration files, I recommend to check the main controller ID, Hardware and Software of your main controller either on the heat pump itself (needs to be opened for that to check the label inside) or with an `ebusd info` command. The main controller is listes with **address 15**, in my case with **ID 24849, SW-Version 0605 and Hardware revision 0102**. This is also part of the naming convention of the configuration file as per [John's instructions](https://github.com/john30/ebusd-configuration), so that ebusd can automatically pick the best fitting configuration file in case several configuration files are found.
+For my heatpump the ebus pins are 41 and 42 where the room control panel is connected and now also my ebus connector.
 
 ![IMG_9585](https://github.com/SmartLessing/ebusd-ochsner/assets/172171816/72860a4a-0de7-4e8d-8d0b-85d5bba65ab8)
 
