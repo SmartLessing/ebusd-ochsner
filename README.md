@@ -53,7 +53,7 @@ Luckily, a software developer with nickname [john30](https://github.com/john30) 
 # The Magic - how to decode the data on the eBUS
 Unfortunately, there is no vendor documentation available from Ochsner or TEM Group related to the specific eBUS protocol they use. Every vendor can integrate and use eBUS as they want, so decoding the data means re-enignineering is required. John also maintains a [ebusd-config](https://github.com/john30/ebusd-configuration) repository where he collects and provides ready-to-use config files for different eBUS devices, mainly (latest config files) for Vaillant devices, but also some older Ochsner configuration files can be found there. 
 An Ochsner related Discussion on Johns github motivated me to fork the work of [Uwe]([https://github.com/cybersmart-eu](https://github.com/cybersmart-eu/ebusd-ochsner)) to refine it in a way so that Home Assistant integration works out of the box with a slightly modfied configuration.
-Please also check outthe github of [Uwe](https://github.com/cybersmart-eu), [Lori](https://github.com/Lorilatschki) and [Wolfgang](https://github.com/wiedwo) as we are sitting in the same boat together :-)
+Please also check out the github repos of [Uwe](https://github.com/cybersmart-eu), [Lori](https://github.com/Lorilatschki) and [Wolfgang](https://github.com/wiedwo) as we are sitting in the same boat together :-)
 
 ## ebusd - most important commands
 
@@ -64,7 +64,7 @@ Dump ebus data
 ebusctl grab result all decode > /home/auser/decode.all.txt
 ```
 
-File conten of decode.all.txt
+File content of decode.all.txt
 ```
 ...
 31150621047d800002 / 0a35810000ff0000000000 = 4: 24849 heatpump_status_string
@@ -163,7 +163,7 @@ Instructions:
 
 ```
 /etc/default/ebusd
-EBUSD_OPTS="--scanconfig --configpath=/etc/ebusd/ -d ens:ebus-air11:9999 --accesslevel=* --httpport=8889 --htmlpath=/va$ --mqtthost=raspberrypi --mqttport=1883 --mqttint=/etc/ebusd/mqtt-hassio.cfg --mqttjson"
+EBUSD_OPTS="--scanconfig --configpath=/etc/ebusd/ -d mdns:543204295c04 --httpport=8889 --htmlpath=/va$ --mqtthost=192.168.1.32 --mqttport=1883 --mqttint=/etc/ebusd/mqtt-hassio.cfg --mqttjson"
 ```
 
 # My Hardware
