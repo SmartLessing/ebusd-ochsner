@@ -1,6 +1,7 @@
 # ebusd-ochsner
 This Repo contains a documentation of my personal setup to gain access via eBUS with ebusd to my Ochsner Heatpump Air 11 C11A with OCHSNER ÖKO-MASTER PU300 as buffer for the heating and PU800 for hotwater. 
 For some general information, please refer to the Wiki from [cybersmart-eu](https://github.com/cybersmart-eu) [Wiki](https://github.com/cybersmart-eu/ebusd-ochsner/wiki/).
+
 # [Ochsner Air 11 C 11 A](https://www.ochsner.com/de-de/ochsner-produkte/air-11-c11a/)
 The (on/off) air source heat pump (equipped with an embedded auxiliary heater) has been installed in September 2021 with an Unifresh 500 buffer/boiler (fresh-water station). To control the heat pump, Ochsner is using controllers from [TEM Group](https://www.tem.ch/), thus there is a lot of documentation available as many other vendors also implement TEM controllers in their heat pumps. Many different heat pump models from Ochsner have the same eBUS components embedded and share the same eBUS addresses for many different values and parameters.
 
@@ -10,6 +11,7 @@ With the help of an ebus Gateway and some re-engineering it is possible to decod
 
 ### Check your Ochsner Hardware and Software Version
 Before someone is using my configuration files, I recommend to check the main controller ID, Hardware and Software of your main controller either on the heat pump itself (needs to be opened for that to check the label inside) or with an `ebusd info` command. The main controller is listes with **address 15**, in my case with **ID 24849, SW-Version 0605 and Hardware revision 0102**. This is also part of the naming convention of the configuration file as per [John's instructions](https://github.com/john30/ebusd-configuration), so that ebusd can automatically pick the best fitting configuration file in case several configuration files are found.
+For my heatpump the ebus pins are 41 and 42 where the room control panel is connected and now also my ebus connector.
 
 ![IMG_9585](https://github.com/SmartLessing/ebusd-ochsner/assets/172171816/72860a4a-0de7-4e8d-8d0b-85d5bba65ab8)
 
@@ -52,7 +54,7 @@ Luckily, a software developer with nickname [john30](https://github.com/john30) 
 # The Magic - how to decode the data on the eBUS
 Unfortunately, there is no vendor documentation available from Ochsner or TEM Group related to the specific eBUS protocol they use. Every vendor can integrate and use eBUS as they want, so decoding the data means re-enignineering is required. John also maintains a [ebusd-config](https://github.com/john30/ebusd-configuration) repository where he collects and provides ready-to-use config files for different eBUS devices, mainly (latest config files) for Vaillant devices, but also some older Ochsner configuration files can be found there. 
 An Ochsner related Discussion on Johns github motivated me to fork the work of [Uwe]([https://github.com/cybersmart-eu](https://github.com/cybersmart-eu/ebusd-ochsner)) to refine it in a way so that Home Assistant integration works out of the box with a slightly modfied configuration.
-Please also check outthe github of [Uwe](https://github.com/cybersmart-eu), [Lori](https://github.com/Lorilatschki) and [Wolfgang](https://github.com/wiedwo) as we are sitting in the same boat together :-)
+Please also check out the github repos of [Uwe](https://github.com/cybersmart-eu), [Lori](https://github.com/Lorilatschki) and [Wolfgang](https://github.com/wiedwo) as we are sitting in the same boat together :-)
 
 ## ebusd - most important commands
 
@@ -63,7 +65,7 @@ Dump ebus data
 ebusctl grab result all decode > /home/auser/decode.all.txt
 ```
 
-File conten of decode.all.txt
+File content of decode.all.txt
 ```
 ...
 31150621047d800002 / 0a35810000ff0000000000 = 4: 24849 heatpump_status_string
@@ -138,13 +140,13 @@ ebusctl scan result
 
 ### ebusctl read
 ```
-ebusctl read heatpump/status.string
+ebusctl read heatpump_status_string
 53;1;00;0;25.5;0.0;Standby
 ```
 
 ### ebusctl write
 ```
-ebusctl write  -c 24849 heatpump/mode.set 0
+ebusctl write -c 24849 heatpump_mode_set_write 0
 done
 ```
 
@@ -157,26 +159,29 @@ Instructions:
    (especially if your device is not /dev/ttyUSB0)
 2. Start the daemon with 'systemctl start ebusd'
 3. Check the log file /var/log/ebusd.log
-4. Make the daemon autostart with 'systemctl enable ebusd'![image](https://github.com/SmartLessing/ebusd-ochsner/assets/172171816/2c08ca3d-f022-4541-9f02-92094c32ac5e)
+4. Make the daemon autostart with 'systemctl enable ebusd'
 ```
 
 ```
 /etc/default/ebusd
-EBUSD_OPTS="--scanconfig --configpath=/etc/ebusd/ -d ens:ebus-air11:9999 --accesslevel=* --httpport=8889 --htmlpath=/va$ --mqtthost=raspberrypi --mqttport=1883 --mqttint=/etc/ebusd/mqtt-hassio.cfg --mqttjson"
+EBUSD_OPTS="--scanconfig --configpath=/etc/ebusd/ -d mdns:543204295c04 --httpport=8889 --htmlpath=/va$ --mqtthost=192.168.1.32 --mqttport=1883 --mqttint=/etc/ebusd/mqtt-hassio.cfg --mqttjson"
 ```
 
 # My Hardware
 
-## Raspberry Pi 5
-The Raspberry Pi 5 was announced on September 28, 2023. Improvements in hardware and software reportedly make the Pi 5 more than twice as powerful as the Pi 4. It comes with an I/O-controller designed in-house, a power button, and an RTC chip, among other things. The RTC chip needs a battery, which can be purchased, but it saves a Pi user the cost of the chip. Unlike the Pi 4, it was released with either 4 or 8 GB of RAM. The 4 GB model costs US$60 and the 8 GB model costs US$80. An important thing to note is that it lacks a 3.5 mm audio/video jack. Users can use Bluetooth, HDMI, USB audio or an Audio HAT if they want to hear sound out of the Pi 5.
+## Lenovo ThinkCentre M70q
+I migrated from a Raspberry Pi 5 to a Proxmox based home server using a refurbished Lenovo ThinkCentre M70q 11DT - Mini - Core i3 10100T / 3 GHz. I installed 32 GB of Ram and a 512 SSD to host Linux Containers (LXC) and virtual machines (VM). I run Proxmox and have two Linux Containers in place to host software for the heatpump: one for Mosquitto and one for ebusd.
+HomneAssistant is running in a virtual Machine.
 
-https://www.raspberrypi.com/products/raspberry-pi-5/
+![240a744dabb97b39a3b42f2cd519bcf4_3](https://github.com/user-attachments/assets/a1400a5c-dd09-4e9f-82f0-91213ea24677)
 
-![23551-Raspberry-Pi-5-8G_(cropped)](https://github.com/SmartLessing/ebusd-ochsner/assets/172171816/4b1c75fe-95dd-4d4c-9b24-11d82de806b6)
+### Useful Links
+https://www.proxmox.com/en/
+https://forums.servethehome.com/index.php?threads/lenovo-thinkcentre-thinkstation-tiny-project-tinyminimicro-reference-thread.34925/
+https://community-scripts.github.io/ProxmoxVE/scripts
 
-
-## eBUS Adapter Shield v5
-eBUS Adapter Shield v5, which can be used to communicate with an eBUS enabled heating, ventilation or solar system.
+## eBUS Adapter Shield C6
+eBUS Adapter Shield C6, which can be used to communicate with an eBUS enabled heating, ventilation or solar system.
 https://adapter.ebusd.eu
 
 # Some (additional) useful Software
@@ -200,18 +205,18 @@ Open source home automation that puts local control and privacy first. Powered b
 https://www.home-assistant.io
 
 This is my dashboard for my heatpump:
-<img width="1445" alt="Bildschirmfoto 2024-07-05 um 17 22 05" src="https://github.com/SmartLessing/ebusd-ochsner/assets/172171816/a59aa1a8-e203-4cc2-9c03-3116b14b41de">
+<img width="1269" alt="Bildschirmfoto 2025-04-13 um 09 28 07" src="https://github.com/user-attachments/assets/0a7b8691-9ac5-4bb0-8135-a878c21fda71" />
 
-## YAML Code für das Setzen der Uhr-Zeit über MQTT
+## YAML Code for setting date and time in the heatpumo via MQTT
 
-Vorraussetzung: write messages sind aktiviert z. B. in der mqtt-hassio.cfg:
-`filter-direction = r|u|^w`
-Und der Feldname darf keinen `/` beinhalten, sonst kann der ebusd die Nachricht nicht parsen: https://github.com/john30/ebusd/issues/1302
+Prerequisites: write messages are activated in mqtt-hassio.cfg: `filter-direction = r|u|^w`
+
+Hint: A slash `/` in the topic string will not work, as ebus does not support it: https://github.com/john30/ebusd/issues/1302
 
 ```yaml
 service: mqtt.publish
 metadata: {}
 data:
-  topic: ebusd/24849/service_time_set/set
-  payload_template: "{{ now().strftime('%H:%M') }}"
+  topic: ebusd/24849/service_time_set_write/set
+  payload: "{{ now().strftime('%H:%M') }}"
 ```
